@@ -38,12 +38,15 @@ from potion p join fabriquer f on p.num_potion = f.num_potion
 join habitant h on h.num_hab = f.num_hab where h.nom = 'Panoramix';
 
 --11. Liste des potions (libellés) absorbées par Homéopatix. (2 lignes)
-select p.lib_potion 
+select distinct p.lib_potion 
 from potion p join absorber a on p.num_potion = a.num_potion 
 join habitant h on a.num_hab = h.num_hab where h.nom ='Homéopatix';
 
 --12. Liste des habitants (noms) ayant absorbé une potion fabriquée par l'habitant numéro 3. (4 lignes)
- 
+ select distinct h.nom 
+ from habitant h  join absorber a on h.num_hab = a.num_hab  
+ join potion p on a.num_potion =p.num_potion  
+ join fabriquer f on p.num_potion = f.num_potion  where f.num_potion = 3;
 --13. Liste des habitants (noms) ayant absorbé une potion fabriquée par Amnésix. (7 lignes)
 select distinct  h.nom 
 from habitant h join absorber a on h.num_hab = a.num_hab 
